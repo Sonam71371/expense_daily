@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 class ExpensesList extends StatelessWidget {
   const ExpensesList({
-    super.key, 
+    super.key,
     required this.expenses,
     required this.onRemoveExpense,
-    });
+  });
 
   final List<Expense> expenses;
   final void Function(Expense expense) onRemoveExpense;
@@ -16,12 +16,14 @@ class ExpensesList extends StatelessWidget {
   Widget build(context) {
     return ListView.builder(
       itemCount: expenses.length,
-      itemBuilder: (ctx, index) => Dismissible( //For swipingf effect for dismiss widget
+      itemBuilder: (ctx, index) => Dismissible(
+        //For swipingf effect for dismiss widget
         key: ValueKey(expenses[index]),
         onDismissed: (direction) {
-onRemoveExpense(expenses[index]);
+          onRemoveExpense(expenses[index]);
         },
-        child: ExpenseItem(expenses[index],
+        child: ExpenseItem(
+          expenses[index],
         ),
       ),
     );
